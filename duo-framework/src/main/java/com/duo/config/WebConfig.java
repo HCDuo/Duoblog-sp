@@ -26,6 +26,9 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    //    跨域资源共享是一种安全策略，用于控制一个源（domain/origin）的网页是否可以请求另一个源的资源。
+    //    浏览器实施了这个策略，以防止潜在的安全威胁。当前端代码运行在一个域名下，而请求的后端服务运行在不同的域名下时，就需要进行跨域请求。
+    //    CORS配置允许服务器声明哪些来源是被允许的，以及允许哪些HTTP方法、请求头等。
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // 设置允许跨域的路径
@@ -41,7 +44,8 @@ public class WebConfig implements WebMvcConfigurer {
                 // 跨域允许时间
                 .maxAge(3600);
     }
-
+    //    消息转换器负责将Java对象转换为HTTP响应体（serialization）或将HTTP请求体转换为Java对象（deserialization）。
+    //    在这里，通过配置FastJSON消息转换器，定义了如何处理JSON格式的数据
     @Bean//使用@Bean注入fastJsonHttpMessageConvert
     public HttpMessageConverter fastJsonHttpMessageConverters() {
         //1.需要定义一个Convert转换消息的对象

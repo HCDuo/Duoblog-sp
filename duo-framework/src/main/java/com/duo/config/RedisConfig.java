@@ -20,8 +20,14 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
+    /**
+     * 配置并创建一个用于操作Redis的RedisTemplate。
+     *
+     * @param connectionFactory Redis连接工厂
+     * @return 配置好的RedisTemplate
+     */
     @Bean
-    @SuppressWarnings(value = { "unchecked", "rawtypes" })
+    @SuppressWarnings(value = { "unchecked", "rawtypes" })//这个注解告诉编译器忽略“unchecked”和“rawtypes”两种警告
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory)
     {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();

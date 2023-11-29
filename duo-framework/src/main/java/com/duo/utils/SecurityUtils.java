@@ -18,25 +18,37 @@ public class SecurityUtils
 {
 
     /**
-     * 获取用户
-     **/
+     * 获取当前登录用户的详细信息。
+     *
+     * @return 当前登录用户的详细信息
+     */
     public static LoginUser getLoginUser()
     {
         return (LoginUser) getAuthentication().getPrincipal();
     }
 
     /**
-     * 获取Authentication
+     * 获取当前认证上下文的Authentication对象。
+        *
+        * @return 当前认证上下文的Authentication对象
      */
     public static Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
-
+    /**
+     * 检查当前登录用户是否为管理员。
+     *
+     * @return 如果当前登录用户是管理员，则返回true，否则返回false
+     */
     public static Boolean isAdmin(){
         Long id = getLoginUser().getUser().getId();
         return id != null && 1L == id;
     }
-
+    /**
+     * 获取当前登录用户的ID。
+     *
+     * @return 当前登录用户的ID
+     */
     public static Long getUserId() {
         return getLoginUser().getUser().getId();
     }
