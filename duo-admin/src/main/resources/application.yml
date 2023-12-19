@@ -2,9 +2,9 @@ server:
   port: 8989
 spring:
   datasource:
-    url: jdbc:mysql://47.106.228.216:33061/duo_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
+    url: jdbc:mysql://47.106.228.216:3306/duo_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: Blog_admin1
+    password: hQ<:V1psx0(t
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
