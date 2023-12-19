@@ -3,6 +3,7 @@ package com.duo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.duo.domain.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <pre>
@@ -14,4 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
+    void updateViewCountById(@Param("id") Long id, @Param("viewCount") Long viewCount);
+
 }

@@ -6,6 +6,8 @@ import com.duo.domain.dto.AddArticleDto;
 import com.duo.domain.dto.ArticleDto;
 import com.duo.domain.entity.Article;
 
+import java.util.Map;
+
 /**
  * 文章表(Article)表服务接口
  *
@@ -31,5 +33,7 @@ public interface ArticleService extends IService<Article> {
     ResponseResult adminArticleUpdate(ArticleDto articleDto);
 
     ResponseResult<?> deleteArtcle(Long id);
+
+    void updateViewCountInDatabase(Map<String, Integer> viewCountMap);
 }
 

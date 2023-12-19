@@ -30,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -244,6 +245,20 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             return ResponseResult.okResult();
         } else {
             throw new SystemException(AppHttpCodeEnum.SYSTEM_ERROR);
+        }
+    }
+
+    @Override
+    public void updateViewCountInDatabase(Map<String, Integer> viewCountMap) {
+        for (Map.Entry<String, Integer> entry : viewCountMap.entrySet()) {
+            Long idString = Long.valueOf(entry.getKey());
+            Long viewCount = Long.valueOf(entry.getValue());
+            try {
+                Long id = Long.valueOf(idString);
+                articleMapper.updateViewCountById(id,viewCount);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid ID format: " + idString);
+            }
         }
     }
 
